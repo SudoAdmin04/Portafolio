@@ -1,65 +1,56 @@
 seo:
   title: Nuxt Landing Template
   description: A beautiful and customizable landing page template built with Nuxt UI. Features hero section, animated terminal, metrics, and CTA — ready to deploy.
-title: "Observe less.\nUnderstand more."
-description: Map your entire system in real-time, surface anomalies before they cascade, and eliminate the dashboards you never needed.
+title: "Software Engineer"
+description: "Hi! My name is Alan del Toro, welcome to my portfolio."
 hero:
-  headline: "v2.0 — Now with predictive alerting"
+  headline: "Active"
   links:
-    - label: Start for free
+    - label: View proyects  
       color: primary
       size: xl
-      to: '#'
-    - label: View demo
-      size: xl
-      color: neutral
-      variant: soft
       to: '#'
 terminal:
   lines:
     - segments:
         - text: "$ "
           style: prompt
-        - text: "npx telemetry"
+        - text: "npx alan-del-toro"
           style: cmd
-        - text: " init"
+        - text: " --init"
           style: flag
     - segments:
-        - text: "→ Scanning service topology..."
+        - text: "→ Cargando perfil profesional..."
           style: dim
     - segments:
-        - text: "→ Found "
-          style: dim
-        - text: "23 services"
+        - text: "✓ "
+          style: success
+        - text: "Alan del Toro"
           style: cmd
-        - text: ", "
+        - text: " — Software Engineer & Web Developer"
           style: dim
-        - text: "847 endpoints"
-          style: cmd
-        - text: ", "
+    - segments:
+        - text: "→ Especialidad: "
           style: dim
-        - text: "12 databases"
+        - text: "Vue.js, Nuxt (Nuxt UI) & Node.js"
+          style: metric-good
+    - segments:
+        - text: "→ Enfoque: "
+          style: dim
+        - text: "Plataformas SaaS, CRM & Microservicios"
           style: cmd
     - segments:
-        - text: "→ Deploying collector agents "
+        - text: "→ Ubicación: "
+          style: dim
+        - text: "Monterrey, NL, México "
           style: dim
         - text: "✓"
           style: success
     - segments:
-        - text: "→ Baseline established in "
-          style: dim
-        - text: "340ms"
-          style: metric-good
-    - segments:
-        - text: " "
-          style: dim
-    - segments:
-        - text: "✓ Live at "
+        - text: "✓ Portafolio inicializado correctamente. ¡Bienvenido!"
           style: success
-        - text: "https://app.example.com/acme-corp"
-          style: url
 logos:
-  title: Trusted by engineering teams at
+  title: Skills at
   items:
     - i-simple-icons-vercel
     - i-simple-icons-github
@@ -67,8 +58,8 @@ logos:
     - i-simple-icons-supabase
     - i-simple-icons-stripe
 features:
-  headline: Capabilities
-  title: "Every signal, one surface."
+  headline: Every complete
+  title: "Proyects"
   description: No more tab-switching between metrics, traces, and logs. Correlate everything into a single explorable topology.
   items:
     - icon: i-lucide-zap
@@ -94,23 +85,15 @@ metrics:
   title: "Built for scale you haven't hit yet."
   description: Process billions of events per day across thousands of production environments with an architecture designed for the workloads of 2030.
   items:
-    - value: "99.99%"
-      label: Uptime SLA
+    - value: "+2 years"
+      label: Experience
       class: "text-success"
-    - value: "<50ms"
-      label: P99 query
+    - value: "<5"
+      label: Proyects completes
       class: "text-primary"
-    - value: "14B+"
-      label: Events / day
+    - value: "16"
+      label: Colaborations proyects
       class: "text-info"
     - value: "4 min"
       label: Early warning
       class: "text-warning"
-cta:
-  title: "Ready to stop\nfirefighting?"
-  description: Free for up to 5 services. No credit card. Deploys in under a minute.
-  command: npx telemetry init
-  links:
-    - label: Start for free
-      color: primary
-      to: '#'

@@ -21,7 +21,7 @@ import { Shader, Pixelate, Plasma, SineWave } from 'shaders/vue'
     >
       <Plasma
         :balance="57"
-        color-a="#c8f031"
+        color-a="#38bdf8"
         color-b="#09090b"
         :contrast="1.6"
         :density="3.3"

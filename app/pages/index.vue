@@ -59,14 +59,10 @@ const { copy, copied } = useClipboard()
 <template>
   <div v-if="page">
     <!-- Hero -->
-    <UPageHero
+    <UPageHero  
       :ui="{
-        root: 'pb-24 sm:pb-32',
-        container: 'relative z-10 lg:py-32',
-        wrapper: 'flex flex-col items-center',
-        title: 'sm:text-6xl lg:text-7xl xl:text-[80px] tracking-tighter leading-[1.05]',
-        description: 'mt-5 max-w-xl mx-auto text-base sm:text-lg leading-relaxed text-default',
-        links: 'gap-3'
+        container: 'relative z-10 lg:py-20 max-w-7xl mx-auto',
+        wrapper: 'w-full'
       }"
     >
       <template #top>
@@ -77,90 +73,94 @@ const { copy, copied } = useClipboard()
         <GradientGlow class="top-0 w-2/3 h-1/2" />
       </template>
 
-      <template #headline>
-        <Motion v-bind="enterMotion(0.2)">
-          <UBadge
-            color="neutral"
-            variant="soft"
-            :label="page.hero.headline"
-            class="rounded-full px-3 py-1.5 gap-1.5 bg-white/5 backdrop-blur-sm"
+      <!-- Disposición a 2 Columnas -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end w-full">
+        <!-- Columna Izquierda: Texto y Botones -->
+        <div class="lg:col-span-7 flex flex-col items-center lg:items-end text-end lg:text-rigth gap-6">
+          <Motion v-bind="enterMotion(0.2)">
+            <UBadge
+              color="neutral"
+              variant="soft"
+              :label="page.hero.headline"
+              class="rounded-full gap-1.5 bg-white/5 backdrop-blur-sm"
+            >
+              <template #leading>
+                <UChip
+                  inset
+                  standalone
+                  :ui="{ base: 'animate-pulse ring-0' }"
+                />
+              </template>
+            </UBadge>
+          </Motion>
+
+          <Motion
+            as="h1"
+            v-bind="enterMotion(0.35)"
+            class="text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.08]"
           >
-            <template #leading>
-              <UChip
-                inset
-                standalone
-                :ui="{ base: 'animate-pulse ring-0' }"
-              />
-            </template>
-          </UBadge>
-        </Motion>
-      </template>
+            {{ heroTitle.primary }}
+            <br v-if="heroTitle.secondary">
+            <span
+              v-if="heroTitle.secondary"
+              class="animate-shimmer bg-size-[200%_auto] bg-clip-text text-transparent"
+              :style="{
+                backgroundImage: 'linear-gradient(135deg, var(--color-primary-400), var(--color-primary-300), var(--color-primary-200), var(--color-primary-100), var(--color-primary-200), var(--color-primary-300), var(--color-primary-400))',
+                animationDuration: '10s'
+              }"
+            >
+              {{ heroTitle.secondary }}
+            </span>
+          </Motion>
 
-      <template #title>
-        <Motion
-          as="span"
-          v-bind="enterMotion(0.35)"
-          class="inline-block"
-        >
-          {{ heroTitle.primary }}
-          <br v-if="heroTitle.secondary">
-          <span
-            v-if="heroTitle.secondary"
-            class="animate-shimmer bg-size-[200%_auto] bg-clip-text text-transparent"
-            :style="{
-              backgroundImage: 'linear-gradient(135deg, var(--color-primary-400), var(--color-primary-300), var(--color-primary-200), var(--color-primary-100), var(--color-primary-200), var(--color-primary-300), var(--color-primary-400))',
-              animationDuration: '10s'
-            }"
+          <Motion
+            as="p"
+            v-bind="enterMotion(0.5)"
+            class="max-w-xl text-base sm:text-lg leading-relaxed text-default"
           >
-            {{ heroTitle.secondary }}
-          </span>
-        </Motion>
-      </template>
+            {{ page.description }}
+          </Motion>
 
-      <template #description>
-        <Motion
-          as="span"
-          v-bind="enterMotion(0.5)"
-          class="inline-block"
-        >
-          {{ page.description }}
-        </Motion>
-      </template>
+          <Motion
+            class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2"
+            v-bind="enterMotion(0.65)"
+          >
+            <UButton
+              v-for="link in page.hero.links"
+              :key="link.label"
+              v-bind="link"
+            />
+          </Motion>
+        </div>
 
-      <template #links>
-        <Motion
-          class="flex flex-wrap justify-center gap-6"
-          v-bind="enterMotion(0.65)"
-        >
-          <UButton
-            v-for="link in page.hero.links"
-            :key="link.label"
-            v-bind="link"
-          />
-        </Motion>
-      </template>
+        <!-- Columna Derecha: Imagen Orgánica -->
+        <div class="lg:col-span-5 w-full flex justify-center">
+          <Motion
+            v-bind="enterMotion(0.45)"
+            class="w-full max-w-md"
+          >
+            <HeroBlobImage 
+              src="/img/Alan.jpg" 
+              alt="Alan Jaen" 
+            />
+          </Motion>
+        </div>
+      </div>
 
+      <!-- Contenido inferior (Terminal y Logos) -->
       <Motion
         as-child
         v-bind="enterMotion(0.85)"
-        class="max-w-2xl mx-auto w-full"
+        class="max-w-2xl mx-auto w-full mt-8"
       >
         <HeroTerminal :lines="page.terminal.lines" />
       </Motion>
 
       <Motion
-        class="max-w-lg mx-auto w-full"
+        class="w-full max-w-4xl mx-auto mt-16"
         v-bind="scrollMotion(0.95)"
       >
-        <UPageLogos
-          :title="page.logos.title"
-          :items="page.logos.items"
-          :ui="{
-            title: 'font-mono uppercase text-xs tracking-[0.12em] text-dimmed',
-            logos: 'gap-0',
-            logo: 'text-muted size-6'
-          }"
-        />
+        <SkillsGrid />
       </Motion>
     </UPageHero>
 
@@ -168,7 +168,7 @@ const { copy, copied } = useClipboard()
     <UPageSection
       id="features"
       :ui="{
-        root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
+        root: 'py-16 sm:py-24 scroll-mt-(--ui-header-height)',
         container: 'max-w-5xl',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
         title: 'max-w-lg mx-auto',
@@ -294,64 +294,5 @@ const { copy, copied } = useClipboard()
       </div>
     </UPageSection>
 
-    <!-- CTA -->
-    <UPageCTA
-      variant="naked"
-      :ui="{
-        root: 'py-24 sm:py-32',
-        container: 'max-w-3xl text-center',
-        title: 'lg:text-5xl tracking-tighter whitespace-pre-line',
-        description: 'mx-auto max-w-sm leading-relaxed text-dimmed'
-      }"
-    >
-      <template #top>
-        <GradientGlow class="bottom-0 w-2/3 h-1/2" />
-      </template>
-
-      <template #title>
-        <Motion
-          as="span"
-          v-bind="scrollMotion()"
-          class="inline-block"
-        >
-          {{ page.cta.title }}
-        </Motion>
-      </template>
-
-      <template #description>
-        <Motion
-          as="span"
-          v-bind="scrollMotion(0.1)"
-          class="inline-block"
-        >
-          {{ page.cta.description }}
-        </Motion>
-      </template>
-
-      <template #links>
-        <Motion
-          class="flex flex-col items-center justify-center gap-6"
-          v-bind="scrollMotion(0.2)"
-        >
-          <UButton
-            v-for="link in page.cta.links"
-            :key="link.label"
-            v-bind="link"
-            size="xl"
-          />
-
-          <UButton
-            :label="page.cta.command"
-            :trailing-icon="copied ? 'i-lucide-copy-check' : 'i-lucide-copy'"
-            color="neutral"
-            variant="subtle"
-            class="font-mono font-light text-toned gap-4"
-            size="xl"
-            :ui="{ trailingIcon: 'size-5' }"
-            @click="copy(page.cta.command)"
-          />
-        </Motion>
-      </template>
-    </UPageCTA>
   </div>
 </template>
