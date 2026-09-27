@@ -1,99 +1,285 @@
-seo:
-  title: Nuxt Landing Template
-  description: A beautiful and customizable landing page template built with Nuxt UI. Features hero section, animated terminal, metrics, and CTA — ready to deploy.
-title: "Software Engineer"
-description: "Hi! My name is Alan del Toro, welcome to my portfolio."
-hero:
-  headline: "Active"
-  links:
-    - label: View proyects  
-      color: primary
-      size: xl
-      to: '#'
-terminal:
-  lines:
-    - segments:
-        - text: "$ "
-          style: prompt
-        - text: "npx alan-del-toro"
-          style: cmd
-        - text: " --init"
-          style: flag
-    - segments:
-        - text: "→ Cargando perfil profesional..."
-          style: dim
-    - segments:
-        - text: "✓ "
-          style: success
-        - text: "Alan del Toro"
-          style: cmd
-        - text: " — Software Engineer & Web Developer"
-          style: dim
-    - segments:
-        - text: "→ Especialidad: "
-          style: dim
-        - text: "Vue.js, Nuxt (Nuxt UI) & Node.js"
-          style: metric-good
-    - segments:
-        - text: "→ Enfoque: "
-          style: dim
-        - text: "Plataformas SaaS, CRM & Microservicios"
-          style: cmd
-    - segments:
-        - text: "→ Ubicación: "
-          style: dim
-        - text: "Monterrey, NL, México "
-          style: dim
-        - text: "✓"
-          style: success
-    - segments:
-        - text: "✓ Portafolio inicializado correctamente. ¡Bienvenido!"
-          style: success
-logos:
-  title: Skills at
-  items:
-    - i-simple-icons-vercel
-    - i-simple-icons-github
-    - i-simple-icons-linear
-    - i-simple-icons-supabase
-    - i-simple-icons-stripe
-features:
-  headline: Every complete
-  title: "Proyects"
-  description: No more tab-switching between metrics, traces, and logs. Correlate everything into a single explorable topology.
-  items:
-    - icon: i-lucide-zap
-      title: Predictive Alerts
-      description: ML models trained on your baselines detect anomalies 4 minutes before they hit your SLOs.
-    - icon: i-lucide-radar
-      title: Topology Mapping
-      description: Auto-discovers service dependencies with zero config. See how a deploy in auth-service ripples through checkout.
-    - icon: i-lucide-layers
-      title: Unified Telemetry
-      description: "Logs, metrics, and traces in one query language. Stop context-switching. Start correlating."
-    - icon: i-lucide-git-commit-horizontal
-      title: Deploy Tracking
-      description: Every deploy is automatically correlated with performance changes. Know which commit caused the regression.
-    - icon: i-lucide-filter
-      title: Smart Sampling
-      description: "AI-driven sampling retains interesting traces and drops noise. Cut storage costs 10× without losing signal."
-    - icon: i-lucide-notebook-pen
-      title: Team Notebooks
-      description: Collaborative investigation notebooks that turn incident debugging into reusable runbooks.
-metrics:
-  headline: By the numbers
-  title: "Built for scale you haven't hit yet."
-  description: Process billions of events per day across thousands of production environments with an architecture designed for the workloads of 2030.
-  items:
-    - value: "+2 years"
-      label: Experience
-      class: "text-success"
-    - value: "<5"
-      label: Proyects completes
-      class: "text-primary"
-    - value: "16"
-      label: Colaborations proyects
-      class: "text-info"
-    - value: "4 min"
-      label: Early warning
-      class: "text-warning"
+en:
+  seo:
+    title: Alan del Toro — Software Engineer
+    description: Portfolio of Alan del Toro, Software Engineer specialized in Vue.js, Nuxt and Node.js. Building SaaS platforms, CRM and microservices from Monterrey, Mexico.
+  title: "Software Engineer"
+  description: "Hi! I'm Alan del Toro, welcome to my portfolio."
+  hero:
+    headline: "Available for work"
+    links:
+      - label: View projects
+        color: primary
+        size: xl
+        to: "#projects"
+  terminal:
+    lines:
+      - segments:
+          - text: "$ "
+            style: prompt
+          - text: "npx alan-del-toro"
+            style: cmd
+          - text: " --init"
+            style: flag
+      - segments:
+          - text: "→ Loading professional profile..."
+            style: dim
+      - segments:
+          - text: "✓ "
+            style: success
+          - text: "Alan del Toro"
+            style: cmd
+          - text: " — Software Engineer & Web Developer"
+            style: dim
+      - segments:
+          - text: "→ Specialty: "
+            style: dim
+          - text: "Vue.js, Nuxt (Nuxt UI) & Node.js"
+            style: metric-good
+      - segments:
+          - text: "→ Focus: "
+            style: dim
+          - text: "SaaS Platforms, CRM & Microservices"
+            style: cmd
+      - segments:
+          - text: "→ Location: "
+            style: dim
+          - text: "Monterrey, NL, Mexico "
+            style: dim
+          - text: "✓"
+            style: success
+      - segments:
+          - text: "✓ Portfolio initialized successfully. Welcome!"
+            style: success
+  features:
+    headline: Coming Soon
+    title: "Projects"
+    description: I am currently documenting and polishing my latest projects for this section. Stay tuned!
+    items:
+      - icon: i-lucide-clock
+        title: Project in progress
+        category: Coming Soon
+        featured: true
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Technical details, screenshots, and live demos will be available soon.
+        stack: ['Vue.js', 'Nuxt', 'TypeScript']
+        links: []
+      - icon: i-lucide-code-xml
+        title: Case study
+        category: Coming Soon
+        description: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Architecture breakdowns and code repositories coming very soon.
+        stack: ['Node.js', 'NestJS', 'PostgreSQL']
+        links: []
+  metrics:
+    headline: By the numbers
+    title: "Efficient architecture, maintainable code, real impact."
+    description: "Building modern web solutions and SaaS platforms focused on high performance, scalability, and software engineering best practices."
+    items:
+      - value: "+2 years"
+        label: Experience
+        class: "text-success"
+      - value: "<5"
+        label: Projects completed
+        class: "text-primary"
+      - value: "16"
+        label: Collaborations
+        class: "text-info"
+      - value: "93%"
+        label: Lighthouse Performance
+        class: "text-warning"
+  cta:
+    title: "Ready to build something amazing?"
+    description: "Let's turn your idea into a scalable product. Available for freelance and full-time opportunities."
+    command: "npx alan-del-toro --contact"
+    links:
+      - label: Get in touch
+        color: primary
+        to: "#"
+es:
+  seo:
+    title: Alan del Toro — Ingeniero de Software
+    description: Portafolio de Alan del Toro, Ingeniero de Software especializado en Vue.js, Nuxt y Node.js. Plataformas SaaS, CRM y microservicios desde Monterrey, México.
+  title: "Ingeniero de Software"
+  description: "¡Hola! Soy Alan del Toro, bienvenido a mi portafolio."
+  hero:
+    headline: "Disponible"
+    links:
+      - label: Ver proyectos
+        color: primary
+        size: xl
+        to: "#projects"
+  terminal:
+    lines:
+      - segments:
+          - text: "$ "
+            style: prompt
+          - text: "npx alan-del-toro"
+            style: cmd
+          - text: " --init"
+            style: flag
+      - segments:
+          - text: "→ Cargando perfil profesional..."
+            style: dim
+      - segments:
+          - text: "✓ "
+            style: success
+          - text: "Alan del Toro"
+            style: cmd
+          - text: " — Ingeniero de Software & Desarrollador Web"
+            style: dim
+      - segments:
+          - text: "→ Especialidad: "
+            style: dim
+          - text: "Vue.js, Nuxt (Nuxt UI) & Node.js"
+            style: metric-good
+      - segments:
+          - text: "→ Enfoque: "
+            style: dim
+          - text: "Plataformas SaaS, CRM & Microservicios"
+            style: cmd
+      - segments:
+          - text: "→ Ubicación: "
+            style: dim
+          - text: "Monterrey, NL, México "
+            style: dim
+          - text: "✓"
+            style: success
+      - segments:
+          - text: "✓ Portafolio inicializado correctamente. ¡Bienvenido!"
+            style: success
+  features:
+    headline: Próximamente
+    title: "Proyectos"
+    description: Actualmente me encuentro documentando y preparando los proyectos más recientes para esta sección. ¡Vuelve pronto!
+    items:
+      - icon: i-lucide-clock
+        title: Proyecto en desarrollo
+        category: Próximamente
+        featured: true
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pronto estaré compartiendo detalles técnicos, capturas y demos en vivo.
+        stack: ['Vue.js', 'Nuxt', 'TypeScript']
+        links: []
+      - icon: i-lucide-code-xml
+        title: Caso de estudio
+        category: Próximamente
+        description: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Análisis de arquitectura y código disponible muy pronto.
+        stack: ['Node.js', 'NestJS', 'PostgreSQL']
+        links: []
+  metrics:
+    headline: Impacto en números
+    title: "Arquitectura eficiente, código mantenible e impacto real."
+    description: "Desarrollo de soluciones web y plataformas SaaS enfocadas en el alto rendimiento, la escalabilidad y las mejores prácticas de ingeniería de software."
+    items:
+      - value: "+2 años"
+        label: Experiencia
+        class: "text-success"
+      - value: "<5"
+        label: Proyectos completados
+        class: "text-primary"
+      - value: "16"
+        label: Colaboraciones
+        class: "text-info"
+      - value: "93%"
+        label: Rendimiento web (Lighthouse)
+        class: "text-warning"
+  cta:
+    title: "¿Listo para construir algo increíble?"
+    description: "Convirtamos tu idea en un producto escalable. Disponible para freelance y tiempo completo."
+    command: "npx alan-del-toro --contacto"
+    links:
+      - label: Contáctame
+        color: primary
+        to: "#"
+fr:
+  seo:
+    title: Alan del Toro — Ingénieur Logiciel
+    description: Portfolio d'Alan del Toro, Ingénieur Logiciel spécialisé en Vue.js, Nuxt et Node.js. Plateformes SaaS, CRM et microservices depuis Monterrey, Mexique.
+  title: "Ingénieur Logiciel"
+  description: "Salut ! Je suis Alan del Toro, bienvenue sur mon portfolio."
+  hero:
+    headline: "Disponible"
+    links:
+      - label: Voir projets
+        color: primary
+        size: xl
+        to: "#projects"
+  terminal:
+    lines:
+      - segments:
+          - text: "$ "
+            style: prompt
+          - text: "npx alan-del-toro"
+            style: cmd
+          - text: " --init"
+            style: flag
+      - segments:
+          - text: "→ Chargement du profil professionnel..."
+            style: dim
+      - segments:
+          - text: "✓ "
+            style: success
+          - text: "Alan del Toro"
+            style: cmd
+          - text: " — Ingénieur Logiciel & Développeur Web"
+            style: dim
+      - segments:
+          - text: "→ Spécialité : "
+            style: dim
+          - text: "Vue.js, Nuxt (Nuxt UI) & Node.js"
+            style: metric-good
+      - segments:
+          - text: "→ Focus : "
+            style: dim
+          - text: "Plateformes SaaS, CRM & Microservices"
+            style: cmd
+      - segments:
+          - text: "→ Localisation : "
+            style: dim
+          - text: "Monterrey, NL, Mexique "
+            style: dim
+          - text: "✓"
+            style: success
+      - segments:
+          - text: "✓ Portfolio initialisé avec succès. Bienvenue !"
+            style: success
+  features:
+    headline: À venir
+    title: "Projets"
+    description: Je suis actuellement en train de documenter et de préparer mes projets récents para esta section. À muy bientôt !
+    items:
+      - icon: i-lucide-clock
+        title: Projet en cours
+        category: À venir
+        featured: true
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Les détails techniques, captures et démos en direct seront bientôt disponibles.
+        stack: ['Vue.js', 'Nuxt', 'TypeScript']
+        links: []
+      - icon: i-lucide-code-xml
+        title: Étude de cas
+        category: À venir
+        description: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Analyse d'architecture et code disponibles très bientôt.
+        stack: ['Node.js', 'NestJS', 'PostgreSQL']
+        links: []
+  metrics:
+    headline: En chiffres
+    title: "Architecture efficiente, code maintenable et impact réel."
+    description: "Développement de solutions web et de plateformes SaaS axées sur la haute performance, la scalabilité et les meilleures pratiques de l'ingénierie logicielle."
+    items:
+      - value: "+2 ans"
+        label: Expérience
+        class: "text-success"
+      - value: "<5"
+        label: Projets réalisés
+        class: "text-primary"
+      - value: "16"
+        label: Collaborations
+        class: "text-info"
+      - value: "93%"
+        label: Performance Lighthouse
+        class: "text-warning"
+  cta:
+    title: "Prêt à construire quelque chose d'incroyable ?"
+    description: "Transformons votre idée en produit évolutif. Disponible en freelance et temps plein."
+    command: "npx alan-del-toro --contact"
+    links:
+      - label: Me contacter
+        color: primary
+        to: "#"

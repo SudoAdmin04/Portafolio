@@ -14,53 +14,70 @@ const createLinkSchema = () => z.object({
   variant: createEnum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link']).optional()
 })
 
+const localeContentSchema = z.object({
+  seo: z.object({
+    title: z.string().nonempty(),
+    description: z.string().nonempty()
+  }),
+  title: z.string().nonempty(),
+  description: z.string().nonempty(),
+  hero: z.object({
+    headline: z.string().optional(),
+    links: z.array(createLinkSchema())
+  }),
+  terminal: z.object({
+    lines: z.array(z.object({
+      segments: z.array(z.object({
+        text: z.string(),
+        style: z.string()
+      }))
+    }))
+  }),
+  logos: z.object({
+    title: z.string().nonempty(),
+    items: z.array(z.string())
+  }),
+  features: z.object({
+    headline: z.string().optional(),
+    title: z.string().nonempty(),
+    description: z.string().nonempty(),
+    items: z.array(z.object({
+      icon: z.string(),
+      title: z.string().nonempty(),
+      description: z.string().nonempty(),
+      category: z.string().optional(),
+      stack: z.array(z.string()).optional(),
+      image: z.string().optional(),
+      links: z.array(createLinkSchema()).optional(),
+      featured: z.boolean().optional()
+    }))
+  }),
+  metrics: z.object({
+    headline: z.string().optional(),
+    title: z.string().nonempty(),
+    description: z.string().nonempty(),
+    items: z.array(z.object({
+      value: z.string().nonempty(),
+      label: z.string().nonempty(),
+      class: z.string().nonempty()
+    }))
+  }),
+  cta: z.object({
+    title: z.string().nonempty(),
+    description: z.string().nonempty(),
+    command: z.string().nonempty(),
+    links: z.array(createLinkSchema())
+  }).optional()
+})
+
 export const collections = {
   content: defineCollection({
     source: 'index.yml',
     type: 'page',
     schema: z.object({
-      hero: z.object({
-        headline: z.string().optional(),
-        links: z.array(createLinkSchema())
-      }),
-      terminal: z.object({
-        lines: z.array(z.object({
-          segments: z.array(z.object({
-            text: z.string(),
-            style: z.string()
-          }))
-        }))
-      }),
-      logos: z.object({
-        title: z.string().nonempty(),
-        items: z.array(z.string())
-      }),
-      features: z.object({
-        headline: z.string().optional(),
-        title: z.string().nonempty(),
-        description: z.string().nonempty(),
-        items: z.array(z.object({
-          icon: z.string(),
-          title: z.string().nonempty(),
-          description: z.string().nonempty()
-        }))
-      }),
-      metrics: z.object({
-        headline: z.string().optional(),
-        title: z.string().nonempty(),
-        description: z.string().nonempty(),
-        items: z.array(z.object({
-          value: z.string().nonempty(),
-          label: z.string().nonempty(),
-          class: z.string().nonempty()
-        }))
-      }),
-      cta: z.object({
-        title: z.string().nonempty(),
-        description: z.string().nonempty(),
-        command: z.string().nonempty(),
-        links: z.array(createLinkSchema())
-      })
+      en: localeContentSchema,
+      es: localeContentSchema,
+      fr: localeContentSchema
     })
   })
 }

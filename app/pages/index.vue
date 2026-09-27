@@ -3,23 +3,56 @@ definePageMeta({
   colorMode: 'dark'
 })
 
+const { locale } = useLocale()
+
 const { data: page } = await useAsyncData('index', () => queryCollection('content').first())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const content = computed(() => {
+  if (!page.value) return null
+  const p = page.value as unknown as Record<string, unknown>
+  if ('en' in p && 'es' in p && 'fr' in p) {
+    return (p[locale.value] ?? p.en) as typeof p.en & {
+      seo: { title: string, description: string }
+      title: string
+      description: string
+      hero: { headline?: string, links: unknown[] }
+      terminal: { lines: unknown[] }
+      features: { headline?: string, title: string, description: string, items: unknown[] }
+      metrics: { headline?: string, title: string, description: string, items: unknown[] }
+    }
+  }
+  return page.value as unknown as typeof p.en & {
+    seo: { title: string, description: string }
+    title: string
+    description: string
+    hero: { headline?: string, links: unknown[] }
+    terminal: { lines: unknown[] }
+    features: { headline?: string, title: string, description: string, items: unknown[] }
+    metrics: { headline?: string, title: string, description: string, items: unknown[] }
+  }
+})
 
-useSeoMeta({
-  title,
-  ogTitle: title,
-  description,
-  ogDescription: description
+const seoTitle = computed(() => content.value?.seo?.title || content.value?.title || '')
+const seoDescription = computed(() => content.value?.seo?.description || content.value?.description || '')
+
+watchEffect(() => {
+  if (!content.value) return
+  useSeoMeta({
+    title: seoTitle.value,
+    ogTitle: seoTitle.value,
+    description: seoDescription.value,
+    ogDescription: seoDescription.value
+  })
+  useHead({
+    htmlAttrs: { lang: locale.value }
+  })
 })
 
 const heroTitle = computed(() => {
-  const [primary = '', ...secondaryParts] = (page.value?.title ?? '').split('\n')
+  const [primary = '', ...secondaryParts] = (content.value?.title ?? '').split('\n')
 
   return {
     primary,
@@ -52,14 +85,14 @@ function staggerMotion(index: number = 0) {
     transition: { duration: 0.6, delay: index * 0.08 }
   }
 }
-
-const { copy, copied } = useClipboard()
 </script>
 
 <template>
-  <div v-if="page">
-    <!-- Hero -->
-    <UPageHero  
+  <div
+    v-if="content"
+    :key="locale"
+  >
+    <UPageHero
       :ui="{
         container: 'relative z-10 lg:py-20 max-w-7xl mx-auto',
         wrapper: 'w-full'
@@ -73,15 +106,13 @@ const { copy, copied } = useClipboard()
         <GradientGlow class="top-0 w-2/3 h-1/2" />
       </template>
 
-      <!-- Disposición a 2 Columnas -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end w-full">
-        <!-- Columna Izquierda: Texto y Botones -->
-        <div class="lg:col-span-7 flex flex-col items-center lg:items-end text-end lg:text-rigth gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+        <div class="lg:col-span-7 flex flex-col items-center lg:items-end text-end lg:text-right gap-6">
           <Motion v-bind="enterMotion(0.2)">
             <UBadge
               color="neutral"
               variant="soft"
-              :label="page.hero.headline"
+              :label="content.hero.headline"
               class="rounded-full gap-1.5 bg-white/5 backdrop-blur-sm"
             >
               <template #leading>
@@ -118,7 +149,7 @@ const { copy, copied } = useClipboard()
             v-bind="enterMotion(0.5)"
             class="max-w-xl text-base sm:text-lg leading-relaxed text-default"
           >
-            {{ page.description }}
+            {{ content.description }}
           </Motion>
 
           <Motion
@@ -126,117 +157,56 @@ const { copy, copied } = useClipboard()
             v-bind="enterMotion(0.65)"
           >
             <UButton
-              v-for="link in page.hero.links"
+              v-for="link in (content.hero.links as any[])"
               :key="link.label"
               v-bind="link"
             />
           </Motion>
         </div>
 
-        <!-- Columna Derecha: Imagen Orgánica -->
         <div class="lg:col-span-5 w-full flex justify-center">
           <Motion
             v-bind="enterMotion(0.45)"
             class="w-full max-w-md"
           >
-            <HeroBlobImage 
-              src="/img/Alan.jpg" 
-              alt="Alan Jaen" 
+            <HeroBlobImage
+              src="/img/Alan.jpg"
+              alt="Alan Jaen"
             />
           </Motion>
         </div>
       </div>
 
-      <!-- Contenido inferior (Terminal y Logos) -->
       <Motion
         as-child
         v-bind="enterMotion(0.85)"
         class="max-w-2xl mx-auto w-full mt-8"
       >
-        <HeroTerminal :lines="page.terminal.lines" />
+        <HeroTerminal :lines="(content.terminal.lines as any)" />
       </Motion>
 
       <Motion
-        class="w-full max-w-4xl mx-auto mt-16"
-        v-bind="scrollMotion(0.95)"
+        class="w-full max-w-5xl mx-auto mt-8"
+        v-bind="scrollMotion(0.12)"
       >
         <SkillsGrid />
       </Motion>
     </UPageHero>
 
-    <!-- Features -->
-    <UPageSection
-      id="features"
-      :ui="{
-        root: 'py-16 sm:py-24 scroll-mt-(--ui-header-height)',
-        container: 'max-w-5xl',
-        headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
-        title: 'max-w-lg mx-auto',
-        description: 'max-w-md mx-auto text-dimmed'
-      }"
-    >
-      <template #headline>
-        <Motion
-          as="span"
-          v-bind="scrollMotion()"
-          class="inline-block"
-        >
-          {{ page.features.headline }}
-        </Motion>
-      </template>
+    <ProjectsSection
+      :headline="content.features.headline"
+      :title="content.features.title"
+      :description="content.features.description"
+      :items="(content.features.items as any)"
+    />
 
-      <template #title>
-        <Motion
-          as="span"
-          v-bind="scrollMotion(0.1)"
-          class="inline-block"
-        >
-          {{ page.features.title }}
-        </Motion>
-      </template>
-
-      <template #description>
-        <Motion
-          as="span"
-          v-bind="scrollMotion(0.2)"
-          class="inline-block"
-        >
-          {{ page.features.description }}
-        </Motion>
-      </template>
-
-      <div class="rounded-2xl border border-default bg-default overflow-hidden">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
-          <Motion
-            v-for="(feature, index) in page.features.items"
-            :key="feature.title"
-            v-bind="staggerMotion(index)"
-          >
-            <UPageCard
-              :icon="feature.icon"
-              :title="feature.title"
-              :description="feature.description"
-              class="rounded-none duration-300"
-              to="#"
-              :ui="{
-                leading: 'mb-5 flex size-9 justify-center rounded-lg bg-primary/10',
-                title: 'text-sm tracking-tight',
-                description: 'text-sm leading-relaxed sm:line-clamp-2 lg:line-clamp-3 text-dimmed'
-              }"
-            />
-          </Motion>
-        </div>
-      </div>
-    </UPageSection>
-
-    <!-- Metrics -->
     <UPageSection
       id="metrics"
       :ui="{
-        root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
+        root: 'croll-mt-(--ui-header-height)',
         container: 'max-w-5xl',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
-        title: 'max-w-lg mx-auto',
+        title: 'max-w-2xl mx-auto',
         description: 'max-w-md mx-auto text-dimmed'
       }"
     >
@@ -246,7 +216,7 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion()"
           class="inline-block"
         >
-          {{ page.metrics.headline }}
+          {{ content.metrics.headline }}
         </Motion>
       </template>
 
@@ -256,7 +226,7 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion(0.1)"
           class="inline-block"
         >
-          {{ page.metrics.title }}
+          {{ content.metrics.title }}
         </Motion>
       </template>
 
@@ -266,14 +236,14 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion(0.2)"
           class="inline-block"
         >
-          {{ page.metrics.description }}
+          {{ content.metrics.description }}
         </Motion>
       </template>
 
       <div class="rounded-2xl border border-default bg-default overflow-hidden">
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px">
           <Motion
-            v-for="(metric, index) in page.metrics.items"
+            v-for="(metric, index) in (content.metrics.items as any[])"
             :key="metric.label"
             v-bind="staggerMotion(index)"
           >
@@ -293,6 +263,5 @@ const { copy, copied } = useClipboard()
         </div>
       </div>
     </UPageSection>
-
   </div>
 </template>

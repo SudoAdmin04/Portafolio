@@ -1,9 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devServer: {
-    port: 3001
-  },
-  
+
   modules: [
     '@nuxt/eslint',
     '@nuxt/content',
@@ -13,7 +9,7 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    enabled: true
+    enabled: false
   },
 
   css: ['~/assets/css/main.css'],
@@ -28,6 +24,8 @@ export default defineNuxtConfig({
     highlight: {
       noApiRoute: false
     }
+  }, devServer: {
+    port: 3001
   },
 
   compatibilityDate: '2026-06-30',
