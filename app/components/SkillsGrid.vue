@@ -67,9 +67,9 @@ const categories = computed<SkillCategory[]>(() => [
     skills: [
       { name: 'Node.js', color: '#339933', icon: '/icons/nodejs.svg' },
       { name: 'NestJS', color: '#E0234E', icon: '/icons/nestjs.svg' },
-      { name: 'Express', color: '#FFFFFF', icon: '/icons/express.js_dark.svg' },
+      { name: 'Express', color: '#FFFFFF', icon: '/icons/Express.js_dark.svg' },
       { name: 'Socket.IO', color: '#FFFFFF', icon: '/icons/socket.IO_dark.svg' },
-      { name: 'Prisma ORM', color: '#FFFFFF', icon: '/icons/prisma_dark.svg' }
+      { name: 'Prisma ORM', color: '#FFFFFF', icon: '/icons/Prisma_dark.svg' }
     ]
   },
   {
@@ -77,8 +77,8 @@ const categories = computed<SkillCategory[]>(() => [
     title: t.value.categories.databases,
     skills: [
       { name: 'PostgreSQL', color: '#4169E1', icon: '/icons/postgresql.svg' },
-      { name: 'MongoDB', color: '#47A248', icon: '/icons/mongodb_dark.svg' },
-      { name: 'MySQL', color: '#00758F', icon: '/icons/mysql_dark.svg' }
+      { name: 'MongoDB', color: '#47A248', icon: '/icons/Mongodb_dark.svg' },
+      { name: 'MySQL', color: '#00758F', icon: '/icons/Mysql_dark.svg' }
     ]
   },
   {
@@ -86,9 +86,9 @@ const categories = computed<SkillCategory[]>(() => [
     title: t.value.categories.tools,
     skills: [
       { name: 'Docker', color: '#2496ED', icon: '/icons/docker.svg' },
-      { name: 'GitHub', color: '#F05032', icon: '/icons/github_dark.svg' },
+      { name: 'GitHub', color: '#F05032', icon: '/icons/Github_dark.svg' },
       { name: 'Trello', color: '#38BDF8', icon: '/icons/trello.svg' },
-      { name: 'OpenCode', color: '#38BDF8', icon: '/icons/opencode_dark.svg' }
+      { name: 'OpenCode', color: '#38BDF8', icon: '/icons/Opencode_dark.svg' }
     ]
   }
 ])
