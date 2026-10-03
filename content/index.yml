@@ -55,13 +55,18 @@ en:
     title: "Projects"
     description: I am currently documenting and polishing my latest projects for this section. Stay tuned!
     items:
-      - icon: i-lucide-clock
-        title: Project in progress
-        category: Coming Soon
+      - icon: i-lucide-building-2
+        title: Shopping Mall Management SaaS
+        category: SaaS Platform
         featured: true
-        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Technical details, screenshots, and live demos will be available soon.
-        stack: ['Vue.js', 'Nuxt', 'TypeScript']
-        links: []
+        description: SaaS platform to manage shopping mall operations — stores, tenants, tickets, finances and reports — from a centralized dashboard built with Nuxt, NestJS and PostgreSQL.
+        stack: ['Nuxt', 'NestJS', 'PostgreSQL']
+        image: /projects/image1.png
+        links:
+          - label: Live demo
+            to: https://centrocomercialfrontend.vercel.app
+            target: _blank
+            trailingIcon: i-lucide-external-link
       - icon: i-lucide-code-xml
         title: Case study
         category: Coming Soon
@@ -150,13 +155,18 @@ es:
     title: "Proyectos"
     description: Actualmente me encuentro documentando y preparando los proyectos más recientes para esta sección. ¡Vuelve pronto!
     items:
-      - icon: i-lucide-clock
-        title: Proyecto en desarrollo
-        category: Próximamente
+      - icon: i-lucide-building-2
+        title: SaaS para Gestión de Centro Comercial
+        category: Plataforma SaaS
         featured: true
-        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pronto estaré compartiendo detalles técnicos, capturas y demos en vivo.
-        stack: ['Vue.js', 'Nuxt', 'TypeScript']
-        links: []
+        description: Plataforma SaaS para gestionar la operación de un centro comercial — locales, arrendatarios, tickets, finanzas y reportes — desde un dashboard centralizado construido con Nuxt, NestJS y PostgreSQL.
+        stack: ['Nuxt', 'NestJS', 'PostgreSQL']
+        image: /projects/image1.png
+        links:
+          - label: Ver demo
+            to: https://centrocomercialfrontend.vercel.app
+            target: _blank
+            trailingIcon: i-lucide-external-link
       - icon: i-lucide-code-xml
         title: Caso de estudio
         category: Próximamente
@@ -245,13 +255,18 @@ fr:
     title: "Projets"
     description: Je suis actuellement en train de documenter et de préparer mes projets récents para esta section. À muy bientôt !
     items:
-      - icon: i-lucide-clock
-        title: Projet en cours
-        category: À venir
+      - icon: i-lucide-building-2
+        title: SaaS de Gestion pour Centre Commercial
+        category: Plateforme SaaS
         featured: true
-        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Les détails techniques, captures et démos en direct seront bientôt disponibles.
-        stack: ['Vue.js', 'Nuxt', 'TypeScript']
-        links: []
+        description: Plateforme SaaS pour gérer l'exploitation d'un centre commercial — boutiques, locataires, tickets, finances et rapports — depuis un tableau de bord centralisé construit avec Nuxt, NestJS et PostgreSQL.
+        stack: ['Nuxt', 'NestJS', 'PostgreSQL']
+        image: /projects/image1.png
+        links:
+          - label: Voir la démo
+            to: https://centrocomercialfrontend.vercel.app
+            target: _blank
+            trailingIcon: i-lucide-external-link
       - icon: i-lucide-code-xml
         title: Étude de cas
         category: À venir

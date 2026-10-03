@@ -101,10 +101,24 @@ function scrollMotion(delay: number = 0) {
           class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-elevated/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_40px_-16px_color-mix(in_oklch,var(--ui-primary)_25%,transparent)] hover:bg-elevated"
           :class="project.featured ? 'sm:col-span-2 lg:col-span-1 ring-1 ring-primary/10' : ''"
         >
-          <div class="relative h-36 overflow-hidden border-b border-default bg-gradient-to-br from-primary/15 via-primary/5 to-transparent p-5">
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50" />
+          <div class="relative h-44 overflow-hidden border-b border-default bg-gradient-to-br from-primary/15 via-primary/5 to-transparent">
+            <img
+              v-if="project.image"
+              :src="project.image"
+              :alt="project.title"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            >
+            <div
+              v-if="project.image"
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"
+            />
+            <div
+              v-else
+              class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50"
+            />
 
-            <div class="relative flex items-start justify-between">
+            <div class="relative flex items-start justify-between p-5 pb-0">
               <span
                 v-if="project.category"
                 class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary"
@@ -127,7 +141,10 @@ function scrollMotion(delay: number = 0) {
               </span>
             </div>
 
-            <div class="relative mt-4 flex justify-center">
+            <div
+              v-if="!project.image"
+              class="relative mt-4 flex justify-center px-5"
+            >
               <div class="flex size-14 items-center justify-center rounded-2xl bg-default border border-default shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:rotate-1">
                 <UIcon
                   :name="project.icon"

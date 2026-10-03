@@ -59,12 +59,12 @@ const t = computed(() => i18n[locale.value] ?? i18n.en)
 
 const socials = [
   { label: 'GitHub', icon: '/icons/GitHub_dark.svg', to: 'https://github.com/SudoAdmin04', alt: 'GitHub' },
-  { label: 'Linkedin', icon: '/icons/linkedin.svg', to: 'https://www.linkedin.com/in/alan-jaen-manuel-del-toro/', alt: 'Linkedin' },
+  { label: 'Linkedin', icon: '/icons/linkedin.svg', to: 'https://www.linkedin.com/in/alan-jaen-manuel-del-toro/', alt: 'Linkedin' }
 ]
 
 const stackIcons = [
   { name: 'Vue', icon: '/icons/vue.svg' },
-  { name: 'Nuxt', icon: '/icons/nuxt.svg' },
+  { name: 'Nuxt', icon: '/icons/nuxt.svg' }
 ]
 </script>
 

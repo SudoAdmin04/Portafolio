@@ -203,7 +203,7 @@ function staggerMotion(index: number = 0) {
     <UPageSection
       id="metrics"
       :ui="{
-        root: 'croll-mt-(--ui-header-height)',
+        root: 'scroll-mt-(--ui-header-height)',
         container: 'max-w-5xl',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
         title: 'max-w-2xl mx-auto',
