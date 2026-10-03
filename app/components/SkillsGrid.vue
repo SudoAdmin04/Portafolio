@@ -54,7 +54,7 @@ const categories = computed<SkillCategory[]>(() => [
     title: t.value.categories.frontend,
     skills: [
       { name: 'Vue.js', color: '#41B883', icon: '/icons/vue.svg' },
-      { name: 'React', color: '#61DAFB', icon: '/icons/react_dark.svg' },
+      { name: 'React', color: '#61DAFB', icon: '/icons/React_dark.svg' },
       { name: 'Angular', color: '#DD0031', icon: '/icons/angular.svg' },
       { name: 'Nuxt', color: '#00DC82', icon: '/icons/nuxt.svg' },
       { name: 'Next.js', color: '#FFFFFF', icon: '/icons/nextjs_icon_dark.svg' },
@@ -68,7 +68,7 @@ const categories = computed<SkillCategory[]>(() => [
       { name: 'Node.js', color: '#339933', icon: '/icons/nodejs.svg' },
       { name: 'NestJS', color: '#E0234E', icon: '/icons/nestjs.svg' },
       { name: 'Express', color: '#FFFFFF', icon: '/icons/Express.js_dark.svg' },
-      { name: 'Socket.IO', color: '#FFFFFF', icon: '/icons/socket.IO_dark.svg' },
+      { name: 'Socket.IO', color: '#FFFFFF', icon: '/icons/Socket.IO_dark.svg' },
       { name: 'Prisma ORM', color: '#FFFFFF', icon: '/icons/Prisma_dark.svg' }
     ]
   },
@@ -77,8 +77,8 @@ const categories = computed<SkillCategory[]>(() => [
     title: t.value.categories.databases,
     skills: [
       { name: 'PostgreSQL', color: '#4169E1', icon: '/icons/postgresql.svg' },
-      { name: 'MongoDB', color: '#47A248', icon: '/icons/Mongodb_dark.svg' },
-      { name: 'MySQL', color: '#00758F', icon: '/icons/Mysql_dark.svg' }
+      { name: 'MongoDB', color: '#47A248', icon: '/icons/MongoDB_dark.svg' },
+      { name: 'MySQL', color: '#00758F', icon: '/icons/MySQL_dark.svg' }
     ]
   },
   {
@@ -86,9 +86,9 @@ const categories = computed<SkillCategory[]>(() => [
     title: t.value.categories.tools,
     skills: [
       { name: 'Docker', color: '#2496ED', icon: '/icons/docker.svg' },
-      { name: 'GitHub', color: '#F05032', icon: '/icons/Github_dark.svg' },
+      { name: 'GitHub', color: '#F05032', icon: '/icons/GitHub_dark.svg' },
       { name: 'Trello', color: '#38BDF8', icon: '/icons/trello.svg' },
-      { name: 'OpenCode', color: '#38BDF8', icon: '/icons/Opencode_dark.svg' }
+      { name: 'OpenCode', color: '#38BDF8', icon: '/icons/OpenCode_dark.svg' }
     ]
   }
 ])
